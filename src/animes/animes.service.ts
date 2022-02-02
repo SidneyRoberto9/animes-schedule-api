@@ -1,0 +1,48 @@
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Anime, AnimeDocument } from './entities/anime.entity';
+import { CreateAnimeDto } from './dto/create-anime.dto';
+import { UpdateAnimeDto } from './dto/update-anime.dto';
+
+@Injectable()
+export class AnimesService {
+  constructor(
+    @InjectModel(Anime.name) private animeModel: Model<AnimeDocument>,
+  ) {}
+
+  create(createAnimeDto: CreateAnimeDto) {
+    const anime = new this.animeModel(createAnimeDto);
+    return anime.save();
+  }
+
+  findAll() {
+    return this.animeModel.find();
+  }
+
+  findOne(id: string) {
+    return this.animeModel.findById(id);
+  }
+
+  update(id: string, updateAnimeDto: UpdateAnimeDto) {
+    return this.animeModel.findByIdAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        $set: UpdateAnimeDto,
+      },
+      {
+        new: true,
+      },
+    );
+  }
+
+  remove(id: string) {
+    return this.animeModel
+      .deleteOne({
+        _id: id,
+      })
+      .exec();
+  }
+}
