@@ -16,6 +16,9 @@ export class Anime {
   title_Japanese: string;
 
   @Prop()
+  image_url: string;
+
+  @Prop()
   type: string;
 
   @Prop()

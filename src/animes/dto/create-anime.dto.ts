@@ -2,6 +2,7 @@ export class CreateAnimeDto {
   title: string;
   title_english: string;
   title_Japanese: string;
+  image_url: string;
   type: string;
   episodes: number;
   status: string;
