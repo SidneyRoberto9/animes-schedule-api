@@ -7,6 +7,7 @@ export class CreateAnimeDto {
   episodes: number;
   status: string;
   airing: boolean;
+  weekday: string;
   rating: string;
   synopsis: string;
   premiered: string;

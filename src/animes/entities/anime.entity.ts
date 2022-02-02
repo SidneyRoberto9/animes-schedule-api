@@ -31,6 +31,9 @@ export class Anime {
   airing: boolean;
 
   @Prop()
+  weekday: string;
+
+  @Prop()
   rating: string;
 
   @Prop()
