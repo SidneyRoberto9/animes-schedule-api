@@ -1,4 +1,5 @@
 export class CreateAnimeDto {
+  _id?: string;
   title: string;
   title_english: string;
   title_Japanese: string;
