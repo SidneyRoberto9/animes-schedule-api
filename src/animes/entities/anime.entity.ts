@@ -40,7 +40,7 @@ export class Anime {
   synopsis: string;
 
   @Prop()
-  year: number;
+  year: string;
 
   @Prop()
   premiered: string;
