@@ -11,6 +11,7 @@ export class CreateAnimeDto {
   weekday: string;
   rating: string;
   synopsis: string;
+  year: number;
   premiered: string;
   producers: string[];
   licensors: string[];
