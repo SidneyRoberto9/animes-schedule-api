@@ -28,6 +28,12 @@ export class AnimesController {
     return this.animesService.findAll();
   }
 
+  @Get('updateAll/:value')
+  @HttpCode(202)
+  updateAll(@Param('value') value: boolean) {
+    return this.animesService.updateAll(value);
+  }
+
   @Get(':id')
   @HttpCode(202)
   findOne(@Param('id') id: string) {

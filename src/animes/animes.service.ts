@@ -24,6 +24,15 @@ export class AnimesService {
     return this.animeModel.findById(id);
   }
 
+  updateAll(value: boolean) {
+    return this.animeModel.find().then((animes) => {
+      animes.forEach((anime) => {
+        anime.airing = value;
+        anime.save();
+      });
+    });
+  }
+
   update(id: string, updateAnimeDto: UpdateAnimeDto) {
     return this.animeModel.findByIdAndUpdate(
       {
