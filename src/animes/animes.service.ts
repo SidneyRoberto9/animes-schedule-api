@@ -24,11 +24,26 @@ export class AnimesService {
     return this.animeModel.findById(id);
   }
 
-  updateAll(value: boolean) {
+  activeAiringAll(value: boolean) {
     return this.animeModel.find().then((animes) => {
       animes.forEach((anime) => {
         anime.airing = value;
         anime.save();
+      });
+    });
+  }
+
+  activeAiringSeason(year: string, premiered: string, value: boolean) {
+    if (premiered.charAt(0).toLowerCase() === premiered[0].charAt(0)) {
+      premiered = premiered.replace(premiered[0], premiered[0].toUpperCase());
+    }
+
+    return this.animeModel.find().then((animes) => {
+      animes.forEach((anime) => {
+        if (anime.year === year && anime.premiered === premiered) {
+          anime.airing = value;
+          anime.save();
+        }
       });
     });
   }

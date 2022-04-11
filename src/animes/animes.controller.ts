@@ -28,10 +28,20 @@ export class AnimesController {
     return this.animesService.findAll();
   }
 
-  @Get('updateAll/:value')
+  @Get('activeAiringAll/:value')
   @HttpCode(202)
-  updateAll(@Param('value') value: boolean) {
-    return this.animesService.updateAll(value);
+  activeAiringAll(@Param('value') value: boolean) {
+    return this.animesService.activeAiringAll(value);
+  }
+
+  @Get('activeAiringSeason/:year/:premiered/:value')
+  @HttpCode(202)
+  updateAll(
+    @Param('year') year: string,
+    @Param('premiered') premiered: string,
+    @Param('value') value: boolean,
+  ) {
+    return this.animesService.activeAiringSeason(year, premiered, value);
   }
 
   @Get(':id')
