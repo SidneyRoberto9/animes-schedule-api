@@ -20,6 +20,20 @@ export class AnimesService {
     return this.animeModel.find();
   }
 
+  findSeasonAll(year: string, premiered: string) {
+    if (premiered.charAt(0).toLowerCase() === premiered[0].charAt(0)) {
+      premiered = premiered.replace(premiered[0], premiered[0].toUpperCase());
+    }
+
+    return this.animeModel
+      .find()
+      .then((animes) =>
+        animes.filter(
+          (anime) => anime.year === year && anime.premiered === premiered,
+        ),
+      );
+  }
+
   findOne(id: string) {
     return this.animeModel.findById(id);
   }

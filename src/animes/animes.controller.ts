@@ -28,6 +28,15 @@ export class AnimesController {
     return this.animesService.findAll();
   }
 
+  @Get('/:year/:premiered')
+  @HttpCode(202)
+  findSeasonAll(
+    @Param('year') year: string,
+    @Param('premiered') premiered: string,
+  ) {
+    return this.animesService.findSeasonAll(year, premiered);
+  }
+
   @Get('activeAiringAll/:value')
   @HttpCode(202)
   activeAiringAll(@Param('value') value: boolean) {
