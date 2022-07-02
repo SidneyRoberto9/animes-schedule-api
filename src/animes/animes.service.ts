@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Anime, AnimeDocument } from './entities/anime.entity';
+
 import { CreateAnimeDto } from './dto/create-anime.dto';
 import { UpdateAnimeDto } from './dto/update-anime.dto';
+import { Anime, AnimeDocument } from './entities/anime.entity';
 
 @Injectable()
 export class AnimesService {
@@ -82,5 +83,9 @@ export class AnimesService {
         _id: id,
       })
       .exec();
+  }
+
+  addManyAnimes(createAnimeDto: CreateAnimeDto[]) {
+    return this.animeModel.insertMany(createAnimeDto);
   }
 }

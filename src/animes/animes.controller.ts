@@ -1,13 +1,5 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  HttpCode,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post } from '@nestjs/common';
+
 import { AnimesService } from './animes.service';
 import { CreateAnimeDto } from './dto/create-anime.dto';
 import { UpdateAnimeDto } from './dto/update-anime.dto';
@@ -63,6 +55,12 @@ export class AnimesController {
   @HttpCode(200)
   update(@Param('id') id: string, @Body() updateAnimeDto: UpdateAnimeDto) {
     return this.animesService.update(id, updateAnimeDto);
+  }
+
+  @Post('addmany')
+  @HttpCode(200)
+  addManyAnimes(@Body() createAnimeDto: CreateAnimeDto[]) {
+    return this.animesService.addManyAnimes(createAnimeDto);
   }
 
   @Delete(':id')
